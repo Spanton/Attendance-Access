@@ -18,6 +18,7 @@ To use with photos:
 
 To use with keyboard:
 * use up and down arrow keys to select student name
+* letters pressed zoom to first student with last name beginning with that letter
 * press space bar to mark attend
 * no way to remove from attendance
 
