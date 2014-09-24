@@ -63,38 +63,41 @@ void mousePressed() {
 }
 
 void keyPressed() {
-  if (key == CODED) {
-    if (keyCode == UP) {
-      if (Student < NumStudents-1) {
-        Student = Student+1;
+  if (key == 32) {
+     recordAttendance();     
+  } else { 
+      if (key == CODED) {
+        if (keyCode == UP) {
+          if (Student < NumStudents-1) {
+            Student = Student-1;
+          } else {
+            Student = 0;
+          }
+        } else if (keyCode == DOWN) {
+          if (Student == 0) {
+            Student = NumStudents-1;
+          } else {
+            Student = Student +1;
+          }
+        }
       } else {
-        Student = 0;
+        if (key == RETURN || key == ENTER) {
+          if (findStudent()) {
+              recordAttendance();
+          }
+          keyIn = null;
+        } else {
+          if (keyIn == null) {
+               keyIn = str(key);
+          } else {
+               if (key > 63) {
+//                  println("here ..." + str(key));   
+                    findLastName(key);     
+                } else {
+                   keyIn += key;
+                }
+          }
+        }
       }
-    } else if (keyCode == DOWN) {
-      if (Student == 0) {
-        Student = NumStudents-1;
-      } else {
-        Student = Student -1;
-      }
-    } 
-  } else {
-    if (key == 32) {
-      recordAttendance();
-    }
-    if (key == RETURN || key == ENTER) {
-      if (findStudent()) {
-          recordAttendance();
-      }
-      keyIn = null;
-    } else {
-      if (keyIn == null) {
-           // keyIn = key; doesn't work .. generates message can not convert to a string from ... why?
-           keyIn = str(key);
-           keyIn = trim(keyIn); //doesn't work here .. but does work below ... why?
-      } else {
-           keyIn += key;
-//           keyIn = trim(keyIn);//now this will clip any leading space someone tries to type in the future and look like a bug if this code is reused ... is there another solution?
-      }
-    }
   }
 }

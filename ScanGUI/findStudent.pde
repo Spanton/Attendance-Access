@@ -29,3 +29,23 @@ boolean findStudent() {
      return(false);
    }   
 }
+
+void findLastName(int l1) {
+  int i = 0;
+  if (l1 > 96) {
+    l1 = l1-32;
+  }
+  String letter = str(char(l1));
+  while (i < NumStudents) {
+    String firstChr = name[i];
+
+    char c1 = firstChr.charAt(0); 
+    println("c1 is  ."+c1+". letter is ."+letter+".");
+    if (str(c1).equals(letter)) {
+        Student = i;
+        i = NumStudents;
+    }
+    i += 1;
+  }
+}
+
