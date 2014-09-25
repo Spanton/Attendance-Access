@@ -67,17 +67,17 @@ void keyPressed() {
      recordAttendance();     
   } else { 
       if (key == CODED) {
-        if (keyCode == UP) {
+        if (keyCode == DOWN) {
           if (Student < NumStudents-1) {
-            Student = Student-1;
+            Student = Student+1;
           } else {
             Student = 0;
           }
-        } else if (keyCode == DOWN) {
+        } else if (keyCode == UP) {
           if (Student == 0) {
             Student = NumStudents-1;
           } else {
-            Student = Student +1;
+            Student = Student -1;
           }
         }
       } else {
