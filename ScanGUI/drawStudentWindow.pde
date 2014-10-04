@@ -3,14 +3,18 @@
 void drawType(float x) {
   line(x, 50, x, 65);
   line(x, 150, x, 255);
-  line(x, 355, x, height);
+  line(x, 425, x, height);
   
   fill(0);
   text("Howard Community College Engineering Seminar Fall 2014",30,40);
-  shape(square, x, 290);
+  shape(saveBoxShape, x, 290);
   text("SAVE",x+7,311);
   fill(255);
-  text(name[Student]+" "+section[Student], x, 95);
+  text(name[Student], x, 95);
+  photo = loadImage("data/barCode.png");
+  image(photo,x+350,83);
+  text(section[Student],x+450,95);
+  
   text(attend[Student], x, 130); 
   //arrival status
   if (!attend[Student].equals("not here")) {
@@ -35,6 +39,8 @@ void drawType(float x) {
   fill(51);
   text(hour12 + ":" + minTxt + " " + amPM + " " + monthName[month()] + " " + day(), x, 280);
   text(saved,x,340);
+  text(EventActivity[iEventActivity],x,375);
+  text(EventName[iEventName],x,410);
   File f = new File(dataPath(sis[Student]+".png"));
   if (f.exists()) { 
     photo = loadImage(sis[Student]+".png");

@@ -9,7 +9,7 @@ void saveTransaction() {
     //creating new file with header if it doesn't exist
     output = createWriter("data/"+fileName);//creating output file using processing rather than java
     //output.println("Close this excel spreadsheet before entering more data. Failure to do this will result in the data being lost.");
-    output.println("Name,ID,Section,Date,Time (1020 is 5pm),Description");//print header
+    output.println("Name,ID,Section,Date,Time (1020 is 5pm),Description,EventDescription,EventActivity");//print header
     int i = 0;
     while (i < NumAttending) {
       output.println(transactions[i]);//saved individual transaction
