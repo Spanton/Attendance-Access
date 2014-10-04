@@ -7,6 +7,11 @@ Instructions:
 * Click on save button with mouse
 * Look for Attendance*.csv files in data folder containing attendance information.
 
+Single Biggest Mistake:
+* Trying to run another program while running this one
+* Scanner functions as a second keyboard, keyboard feeds the window with focus
+* Running another program changes the focus
+
 To use Bar Code:
 * purchase barcode reader with USB cable .. that simulates a keyboard
 * download [Bar Code Font][http://www.bizfonts.com/free/#Download_Free_Barcode_Font] that can be turned into bar codes.
