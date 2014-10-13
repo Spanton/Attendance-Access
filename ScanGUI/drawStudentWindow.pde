@@ -14,7 +14,11 @@ void drawType(float x) {
   photo = loadImage("data/barCode.png");
   image(photo,x+350,83);
   text(section[Student],x+450,95);
-  
+  if (locked) {
+    shape(lock, x+500, 75, 25, 25);
+  } else {
+    shape(unLock, x+500, 75, 25, 25);
+  }
   text(attend[Student], x, 130); 
   //arrival status
   if (!attend[Student].equals("not here")) {

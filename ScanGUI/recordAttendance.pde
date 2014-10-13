@@ -8,6 +8,7 @@ void recordAttendance() {
   if (attend[Student].equals("not here")) {
      int minTotal = hour()*60 + minute();
      attend[Student] = "Arrived " +hour12 + ":" + minTxt + " " + amPM + " " + monthName[month()] + " " + day();
+     locked = false;
      messages = "Successful ID Scan .. marked arrived .. ready to scan another";
      String attendanceTransaction = "\"" + name[Student] + "\",\"" + sis[Student] + "\",\"" + section[Student] + "\",\"" + month()+"/"+day()+"/"+year() + "\"," + minTotal + ",\"" + attend[Student] + "\",\"" + EventName[iEventName] + "\",\"" + EventActivity[iEventActivity] + "\"";
      transactions[NumAttending] = attendanceTransaction;

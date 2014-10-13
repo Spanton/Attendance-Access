@@ -47,10 +47,14 @@ Boolean tfEventName = false;
 Boolean tfEventActivity = false;
 Boolean tfPrintStudent = false;
 Boolean tfPrintSection = false;
+Boolean tfLockUnLock = false;
 
 PShape helpBoxShape; // The help box, never over it
 int mXt = 3 ; // mouse over help tail X offset
 int mYt = 35; // mouse over help tail Y offset
+PShape lock; //locked section icon
+PShape unLock; //unlocked section icon
+Boolean locked = false;
 
 public void setup(){
   size(800,600, P2D);
@@ -69,6 +73,8 @@ public void setup(){
   helpBoxShape = createShape(RECT, 0,0,200,20);
   helpBoxShape.setFill(color(255, 128, 255));
   helpBoxShape.setStroke(false);
+  lock = loadShape("data/lock.svg");
+  unLock = loadShape("data/unLock.svg");
 }
 
 
@@ -115,6 +121,16 @@ public void draw(){
    } else {
       tfPrintSection = false;
    }
+   if (mouseX > 580 && mouseX <610 && //checking to see if mouse is over the lock icon
+      mouseY > 78 && mouseY < 100) {
+      shape(helpBoxShape, mouseX, mouseY+20);
+      textFont(fprint);
+      text("toggle lock/unlock section",mouseX+mXt,mouseY+mYt);
+      textFont(f);
+      tfLockUnLock = true;
+   } else {
+      tfLockUnLock = false;   
+   }   
    if (mouseX > 75 && mouseX <250 && //checking to see if mouse is over event activity
       mouseY > 340 && mouseY < 375) {
       shape(helpBoxShape, mouseX, mouseY+20);
@@ -159,6 +175,13 @@ void mousePressed() { //do something associated with hot spot
   if(tfPrintStudent) {
         printBarCode();
   }
+  if(tfLockUnLock) {
+    if (locked) {
+        locked = false;
+    } else {
+        locked = true;
+    }
+  }
 }
 
 void keyPressed() {
@@ -167,17 +190,37 @@ void keyPressed() {
   } else { 
       if (key == CODED) {
         if (keyCode == DOWN) {
+          String s = section[Student];
           if (Student < NumStudents-1) {
             Student = Student+1;
           } else {
             Student = 0;
           }
+          if (locked) {
+            while (!(section[Student].equals(s))){
+              if (Student < NumStudents-1) {
+                Student = Student+1;
+              } else {
+                Student = 0;
+              }
+            }
+          }           
         } else if (keyCode == UP) {
+          String s = section[Student];
           if (Student == 0) {
             Student = NumStudents-1;
           } else {
             Student = Student -1;
           }
+          if (locked) {
+            while (!(section[Student].equals(s))){
+              if (Student == 0) {
+                Student = NumStudents-1;
+              } else {
+                Student = Student -1;
+              }
+            }
+          }                 
         }
       } else {
         if (key == RETURN || key == ENTER) {
@@ -190,7 +233,6 @@ void keyPressed() {
                keyIn = str(key);
           } else {
                if (key > 63) {
-//                  println("here ..." + str(key));   
                     findLastName(key);     
                 } else {
                    keyIn += key;
