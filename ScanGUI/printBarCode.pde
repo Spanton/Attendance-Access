@@ -1,5 +1,5 @@
 void printBarCode() {
-/*  String ff = "output-"+millis()+".pdf";
+  String ff = "output-"+millis()+".pdf";
   PGraphics pdf = createGraphics(300, 300, PDF, "data\\"+ff);
   pdf.beginDraw();
   pdf.fill(0);
@@ -12,10 +12,10 @@ void printBarCode() {
   pdfPrint(ff);
   //println("here");
   messages = ("Have printed "+name[Student]+"'s barcode");
-*/}
+}
 
 void printSectionBarCode(int i, int pagePrint) {
-/*  String ff = "output-"+millis()+".pdf";
+  String ff = "output-"+millis()+".pdf";
   PGraphics pdf = createGraphics(300,1000, PDF, "data\\"+ff);
   pdf.beginDraw();
   pdf.fill(0);
@@ -45,12 +45,12 @@ void printSectionBarCode(int i, int pagePrint) {
   pdf.endDraw();
   pdfPrint(ff);
   messages = ("Have printed section's "+ID+" barcodes");
-*/}
+}
 
 void pdfPrint(String ff) {
-/*  String dOutput = dataPath(ff);
+  String dOutput = dataPath(ff);
   println(dOutput);
-  String params[] = {"\"C:\\Program Files (x86)\\Foxit Software\\Foxit Reader\\Foxit Reader.exe\"", "/p", dOutput };
+  String params[] = {"\"C:\\Program Files (x86)\\Foxit Software\\Foxit Reader\\FoxitReader.exe\"", "/p", dOutput };
   println(params);
   try {
     Process p = Runtime.getRuntime().exec(params);
@@ -67,4 +67,4 @@ void pdfPrint(String ff) {
   println(params);
   println("del " + dOutput);
   open("del " + dOutput);
-*/}
+}
