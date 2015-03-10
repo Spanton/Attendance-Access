@@ -117,7 +117,7 @@ public void draw(){
       textFont(fprint);
       text("click to print section's bar code",mouseX+mXt,mouseY+mYt);
       textFont(f);
-      tfPrintSection = false;
+      tfPrintSection = true;
    } else {
       tfPrintSection = false;
    }
